@@ -1,11 +1,12 @@
 <script lang="ts">
-  import { Routes } from '$lib/constants';
+  import { onNavigate } from '$app/navigation';
+  import { RoutesWithProblems } from '$lib/constants';
   import { CaretLeft, List, X } from 'phosphor-svelte';
   import { onMount } from 'svelte';
   import { blur, fly } from 'svelte/transition';
 
   let menuOpen = false;
-  const routes = Object.entries(Routes);
+  const routes = Object.entries(RoutesWithProblems);
 
   const handleKeydown = (event: KeyboardEvent) => {
     if (menuOpen && event.key === 'Escape') {
@@ -23,6 +24,10 @@
       window.removeEventListener('keydown', handleKeydown);
     };
   });
+
+  onNavigate(() => {
+    menuOpen = false;
+  })
 </script>
 
 <header class="z-50 bg-slate-500 text-white shadow-lg">
