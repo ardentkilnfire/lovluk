@@ -1,0 +1,34 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+li[data-expanded='yes'] {
+  @apply text-purple-400;
+  @apply font-bold;
+  button::after {
+    @apply text-slate-700;
+    content: '=';
+  }
+
+  ul {
+    @apply font-normal;
+    @apply text-slate-700;
+    display: block !important;
+    max-height: 20rem;
+    text-indent: 2ch;
+  }
+}
+
+@layer base {
+  .btn {
+    @apply rounded-md border-2 border-slate-500 bg-slate-500 px-4 py-2 font-bold hover:brightness-90;
+  }
+
+  .outline-btn {
+    @apply rounded-md border-2 border-slate-500 bg-transparent px-4 py-2 font-bold text-slate-500 transition-all duration-300;
+
+    &:hover {
+      @apply bg-slate-500 text-white;
+    }
+  }
+}
